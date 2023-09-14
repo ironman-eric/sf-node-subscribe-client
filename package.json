@@ -1,0 +1,22 @@
+{
+  "name": "sf-pub-sub",
+  "version": "1.0.0",
+  "description": "nodejs integration for salesforce pub sub",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "lint": "eslint src/**",
+    "lint:fix": "eslint src/** --fix"
+  },
+  "keywords": [
+    "salesforce",
+    "pub-sub"
+  ],
+  "author": "ironman-eric",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.49.0",
+    "eslint-config-google": "^0.14.0",
+    "jest": "^29.7.0"
+  }
+}
