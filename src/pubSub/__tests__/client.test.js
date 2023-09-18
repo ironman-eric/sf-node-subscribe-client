@@ -1,7 +1,7 @@
 const createClient = require('../client.js');
 
 describe('client', () => {
-  it('should return a client', async () => {
-    expect(createClient).toEqual(expect.any(Function));
+  it('should return a client', () => {
+    expect(createClient('target')).toEqual(expect.any(Object));
   });
 });
