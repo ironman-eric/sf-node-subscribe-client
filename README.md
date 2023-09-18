@@ -80,3 +80,27 @@ Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 <!-- This project is open source and available under the [... License](). -->
 
 <!-- You don't have to include all sections - just the one's relevant to your project -->
+
+
+//Creating PE instances
+List<Notification__e> platformEventList = new List<Notification__e>();
+Notification__e testEvent = new Notification__e();
+testEvent.Message__c = 'Message included in the platform event';
+platformEventList.add(testEvent);
+
+// Call method to publish events
+Database.SaveResult[] srList = EventBus.publish(platformEventList);
+
+// Inspect publishing result
+for(Database.SaveResult srVar:srList){
+    if (srVar.isSuccess()) {
+        System.debug('Successfully published event.');
+    } else {
+        for(Database.Error err : srVar.getErrors()) {
+            System.debug('Error returned: ' +
+                         err.getStatusCode() +
+                         ' - ' +
+                         err.getMessage());
+        }
+    }    
+}

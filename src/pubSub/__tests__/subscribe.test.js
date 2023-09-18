@@ -7,6 +7,7 @@ describe('subscribe', () => {
 
     const mockEvents = {
       on: jest.fn(),
+      write: jest.fn(),
     };
 
     const mockClient = {
@@ -35,6 +36,7 @@ describe('subscribe', () => {
 
     const mockEvents = {
       on: jest.fn(),
+      write: jest.fn(),
     };
 
     const mockClient = {
@@ -61,6 +63,7 @@ describe('subscribe', () => {
     // ARRANGE
     const mockEvents = {
       on: jest.fn(),
+      write: jest.fn(),
     };
 
     const mockClient = {

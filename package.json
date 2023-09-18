@@ -4,6 +4,7 @@
   "description": "nodejs integration for salesforce pub sub",
   "main": "index.js",
   "scripts": {
+    "dev": "node ./src/index.js",
     "test": "jest",
     "lint": "eslint src --ext .js",
     "lint:fix": "npm run lint -- --fix"
@@ -21,6 +22,11 @@
   },
   "dependencies": {
     "@grpc/grpc-js": "^1.9.3",
-    "superagent": "^8.1.2"
+    "superagent": "^8.1.2",
+    "certifi": "^14.5.15",
+    "fast-xml-parser": "^4.2.7",
+    "convict": "^6.2.4",
+    "convict-format-with-validator": "^6.2.0",
+    "dotenv": "^16.3.1"
   }
 }
