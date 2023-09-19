@@ -1,9 +1,14 @@
-const subscribe = require('../subscribe.js');
+const subscribe = require('../subscribe');
+const parser = require('../../events/parser');
+
+jest.mock('../../events/parser', () => {
+  return jest.fn().mockImplementation(() => ({}));
+});
 
 describe('subscribe', () => {
   it('should return data', async () => {
     // ARRANGE
-    const assert = [];
+    const assert = [{}];
 
     const mockEvents = {
       on: jest.fn(),
@@ -12,11 +17,25 @@ describe('subscribe', () => {
 
     const mockClient = {
       subscribe: jest.fn(() => mockEvents),
+      getSchema: jest.fn(() => Promise.resolve({ schema_json: {} })),
+    };
+
+    const mockData = {
+      events: [
+        {
+          event: {
+            schema_id: 1,
+            payload: {
+              data: [1],
+            },
+          },
+        },
+      ],
     };
 
     mockEvents.on.mockImplementation((event, cb) => {
       if (event === 'data') {
-        cb([]);
+        cb(mockData);
       }
     });
 
