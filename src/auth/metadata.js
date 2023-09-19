@@ -1,4 +1,4 @@
-const {XMLParser} = require('fast-xml-parser');
+const { XMLParser } = require('fast-xml-parser');
 
 const metadata = (xml) => {
   const parser = new XMLParser();
@@ -8,10 +8,10 @@ const metadata = (xml) => {
   const instanceUrl = new URL(loginResponse['serverUrl']);
 
   return {
-    'accessToken': loginResponse['sessionId'],
-    'instanceUrl': `${instanceUrl.protocol}//${instanceUrl.host}`,
-    'tenantId': loginResponse['userInfo']['organizationId'],
-  }; ;
+    accessToken: loginResponse['sessionId'],
+    instanceUrl: `${instanceUrl.protocol}//${instanceUrl.host}`,
+    tenantId: loginResponse['userInfo']['organizationId'],
+  };
 };
 
 module.exports = metadata;

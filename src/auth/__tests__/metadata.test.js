@@ -4,9 +4,9 @@ describe('metadata', () => {
   it('should build metadata', async () => {
     // ARRANGE
     const assert = {
-      'accessToken': 'session',
-      'instanceUrl': 'https://localhost',
-      'tenantId': 'org',
+      accessToken: 'session',
+      instanceUrl: 'https://localhost',
+      tenantId: 'org',
     };
 
     const xml = `

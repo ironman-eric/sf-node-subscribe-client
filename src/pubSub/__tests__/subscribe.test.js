@@ -11,7 +11,7 @@ describe('subscribe', () => {
     };
 
     const mockClient = {
-      subscribe: jest.fn(() => (mockEvents)),
+      subscribe: jest.fn(() => mockEvents),
     };
 
     mockEvents.on.mockImplementation((event, cb) => {
@@ -40,7 +40,7 @@ describe('subscribe', () => {
     };
 
     const mockClient = {
-      subscribe: jest.fn(() => (mockEvents)),
+      subscribe: jest.fn(() => mockEvents),
     };
 
     mockEvents.on.mockImplementation((event, cb) => {
@@ -67,7 +67,7 @@ describe('subscribe', () => {
     };
 
     const mockClient = {
-      subscribe: jest.fn(() => (mockEvents)),
+      subscribe: jest.fn(() => mockEvents),
     };
 
     mockEvents.on.mockImplementation((event, cb) => {
@@ -77,9 +77,8 @@ describe('subscribe', () => {
     });
 
     // ACT
-    await subscribe(mockClient)
-        .catch((e) => {
-          expect(e).toEqual('error');
-        });
+    await subscribe(mockClient).catch((e) => {
+      expect(e).toEqual('error');
+    });
   });
 });

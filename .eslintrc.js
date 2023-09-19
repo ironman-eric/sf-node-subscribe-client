@@ -1,27 +1,23 @@
 module.exports = {
-  'env': {
-    'browser': true,
-    'commonjs': true,
-    'es2021': true,
+  env: {
+    browser: true,
+    commonjs: true,
+    es2021: true,
   },
-  'extends': 'google',
-  'overrides': [
+  extends: 'google',
+  overrides: [
     {
-      'env': {
-        'node': true,
+      env: {
+        node: true,
       },
-      'files': [
-        'src/**/*.js',
-        '*.proto'
-      ],
-      'parserOptions': {
-        'sourceType': 'script',
+      files: ['src/**/*.js', '*.proto'],
+      parserOptions: {
+        sourceType: 'script',
       },
     },
   ],
-  'parserOptions': {
-    'ecmaVersion': 'latest',
-  },  
-  'rules': {
-  }
+  parserOptions: {
+    ecmaVersion: 'latest',
+  },
+  rules: {},
 };
