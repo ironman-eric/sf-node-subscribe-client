@@ -1,91 +1,97 @@
 # sf-pub-sub
+
 nodejs salesforce pub sub integration
 
 ## Table of Contents
-* [General Info](#general-information)
-* [Technologies Used](#technologies-used)
-* [Features](#features)
-* [Setup](#setup)
-* [Usage](#usage)
-* [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
-* [Acknowledgements](#acknowledgements)
-* [Contact](#contact)
-<!-- * [License](#license) -->
 
+- [General Info](#general-information)
+- [Technologies Used](#technologies-used)
+- [Features](#features)
+- [Setup](#setup)
+- [Usage](#usage)
+- [Project Status](#project-status)
+- [Room for Improvement](#room-for-improvement)
+- [Acknowledgements](#acknowledgements)
+- [Contact](#contact)
 
 ## General Information
-- Provide general information about your project here.
-- What problem does it (intend to) solve?
-- What is the purpose of your project?
-- Why did you undertake it?
-<!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
+nodejs client for salesforce pub-sub
 
 ## Technologies Used
-- Tech 1 - version 1.0
-- Tech 2 - version 2.0
-- Tech 3 - version 3.0
 
+- nodejs
+- grpc
 
 ## Features
-List the ready features here:
-- Awesome feature 1
-- Awesome feature 2
-- Awesome feature 3
 
+- grpc subscibe to salesforce sub events
+- salesforce username/password login
+- proto loader
+- parse platform events into json object
 
 ## Setup
-What are the project requirements/dependencies? Where are they listed? A requirements.txt or a Pipfile.lock file perhaps? Where is it located?
 
-Proceed to describe how to install / setup one's local environment / get started with the project.
+### Install Dependencies
 
+```sh
+npm install
+```
+
+### env
+
+```
+touch .env
+```
+
+Sample contents of .env
+
+```
+SF_USER_NAME="salesforce username"
+SF_PASSWORD="salesforce password"
+SF_ENDPOINT="api.pubsub.salesforce.com:7443"
+```
+
+### Salesforce Account
+
+You need a valid salesforce account
 
 ## Usage
-How does one go about using it?
-Provide various use cases and code examples here.
 
-`write-your-code-here`
-
+```
+npm run dev
+```
 
 ## Project Status
-Project is: _in progress_ / _complete_ / _no longer being worked on_. If you are no longer working on it, provide reasons why.
 
+_in progress_
 
 ## Room for Improvement
-Include areas you believe need improvement / could be improved. Also add TODOs for future development.
 
 Room for improvement:
-- Improvement to be done 1
-- Improvement to be done 2
+
+- Logging
+- Error handling
 
 To do:
-- Feature to be added 1
-- Feature to be added 2
 
+- Publish events
+- Currently subscribe to start of stream
 
 ## Acknowledgements
-Give credit here.
-- This project was inspired by...
-- This project was based on [this tutorial](https://www.example.com).
-- Many thanks to...
 
+Give credit here.
+
+- This project was inspired by [salesforce-pubsub-api-client](https://www.npmjs.com/package/salesforce-pubsub-api-client).
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
 
-
-<!-- Optional -->
-<!-- ## License -->
-<!-- This project is open source and available under the [... License](). -->
-
-<!-- You don't have to include all sections - just the one's relevant to your project -->
-
+Created by [ironman-eric](https://github.com/ironman-eric)
 
 //Creating PE instances
-List<Notification__e> platformEventList = new List<Notification__e>();
-Notification__e testEvent = new Notification__e();
-testEvent.Message__c = 'Message included in the platform event';
+List<Notification**e> platformEventList = new List<Notification**e>();
+Notification**e testEvent = new Notification**e();
+testEvent.Message\_\_c = 'Message included in the platform event';
 platformEventList.add(testEvent);
 
 // Call method to publish events
@@ -93,14 +99,14 @@ Database.SaveResult[] srList = EventBus.publish(platformEventList);
 
 // Inspect publishing result
 for(Database.SaveResult srVar:srList){
-    if (srVar.isSuccess()) {
-        System.debug('Successfully published event.');
-    } else {
-        for(Database.Error err : srVar.getErrors()) {
-            System.debug('Error returned: ' +
-                         err.getStatusCode() +
-                         ' - ' +
-                         err.getMessage());
-        }
-    }    
+if (srVar.isSuccess()) {
+System.debug('Successfully published event.');
+} else {
+for(Database.Error err : srVar.getErrors()) {
+System.debug('Error returned: ' +
+err.getStatusCode() +
+' - ' +
+err.getMessage());
+}
+}  
 }

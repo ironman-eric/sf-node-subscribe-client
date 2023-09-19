@@ -14,10 +14,10 @@ const login = async (userName, password) => {
     </soapenv:Envelope>`;
 
   const result = await superagent
-      .post(url)
-      .send(data)
-      .set('content-type', 'text/xml')
-      .set('SOAPAction', 'Login');
+    .post(url)
+    .send(data)
+    .set('content-type', 'text/xml')
+    .set('SOAPAction', 'Login');
 
   return result.text;
 };

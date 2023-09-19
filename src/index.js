@@ -1,11 +1,14 @@
 require('dotenv').config();
-const {createClient, subscribe} = require('./pubSub');
-const {login, metadata} = require('./auth');
+const { createClient, subscribe } = require('./pubSub');
+const { login, metadata } = require('./auth');
 const config = require('./config.js');
 
 async function main() {
   try {
-    const loginResult = await login(config.get('sf.user_name'), config.get('sf.password'));
+    const loginResult = await login(
+      config.get('sf.user_name'),
+      config.get('sf.password')
+    );
     const auth = metadata(loginResult);
     const client = createClient(config.get('sf.endpoint'), auth);
 

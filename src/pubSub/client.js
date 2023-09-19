@@ -6,14 +6,13 @@ const fs = require('fs');
 const PROTO_PATH = path.join(__dirname, '../protos/pubsub_api.proto');
 
 const createClient = (target, metadata) => {
-  const packageDefinition = protoLoader.loadSync(PROTO_PATH,
-      {
-        keepCase: true,
-        longs: String,
-        enums: String,
-        defaults: true,
-        oneofs: true,
-      });
+  const packageDefinition = protoLoader.loadSync(PROTO_PATH, {
+    keepCase: true,
+    longs: String,
+    enums: String,
+    defaults: true,
+    oneofs: true,
+  });
   const pubSubProto = grpc.loadPackageDefinition(packageDefinition).eventbus.v1;
 
   const rootCert = fs.readFileSync(certifi);
@@ -27,8 +26,8 @@ const createClient = (target, metadata) => {
   };
   const callCreds = grpc.credentials.createFromMetadataGenerator(metaCallback);
   const combCreds = grpc.credentials.combineChannelCredentials(
-      grpc.credentials.createSsl(rootCert),
-      callCreds,
+    grpc.credentials.createSsl(rootCert),
+    callCreds
   );
 
   return new pubSubProto.PubSub(target, combCreds);

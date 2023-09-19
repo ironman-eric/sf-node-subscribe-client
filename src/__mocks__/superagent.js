@@ -4,7 +4,7 @@ module.exports = {
   set: jest.fn().mockReturnThis(),
   then: jest.fn().mockImplementation((callback) => {
     return new Promise((resolve, reject) => {
-      return resolve(callback({text: 'token'}));
+      return resolve(callback({ text: 'token' }));
     });
   }),
 };
