@@ -9,6 +9,7 @@ async function main() {
       config.get('sf.user_name'),
       config.get('sf.password')
     );
+    console.log(loginResult);
     const auth = metadata(loginResult);
     const client = createClient(config.get('sf.endpoint'), auth);
 
