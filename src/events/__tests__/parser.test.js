@@ -8,9 +8,7 @@ describe('parser', () => {
     const schema = {
       type: 'record',
       name: 'Event',
-      fields: [
-        { name: 'name', type: 'string' }
-      ],
+      fields: [{ name: 'name', type: 'string' }],
     };
     const type = avro.Type.forSchema(schema);
     const data = { name: 'Notification' };

@@ -10,7 +10,7 @@ describe('schema', () => {
     };
 
     const mockClient = {
-      getSchema: jest.fn(() => assert),
+      getSchema: jest.fn(() => Promise.resolve(assert)),
     };
 
     // ACT
