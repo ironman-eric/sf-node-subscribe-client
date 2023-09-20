@@ -1,4 +1,3 @@
-const superagent = require('superagent');
 const login = require('../login.js');
 
 jest.mock('superagent');
