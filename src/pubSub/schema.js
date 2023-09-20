@@ -4,11 +4,10 @@ const schema = (client, schemaId) => {
       schema_id: schemaId,
     };
 
-    client.getSchema(schemaRequest, (error, value) => {
-      if (error) reject(error);
-
-      resolve(value);
-    });
+    client
+      .getSchema(schemaRequest)
+      .then((value) => resolve(value))
+      .catch((err) => reject(err));
   });
 };
 

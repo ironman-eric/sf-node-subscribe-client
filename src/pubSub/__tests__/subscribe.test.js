@@ -1,8 +1,7 @@
 const subscribe = require('../subscribe');
-const parser = require('../../events/parser');
 
 jest.mock('../../events/parser', () => {
-  return jest.fn().mockImplementation(() => ({}));
+  return jest.fn(() => ({}));
 });
 
 describe('subscribe', () => {
@@ -17,7 +16,9 @@ describe('subscribe', () => {
 
     const mockClient = {
       subscribe: jest.fn(() => mockEvents),
-      getSchema: jest.fn(() => Promise.resolve({ schema_json: {} })),
+      getSchema: jest.fn(() =>
+        Promise.resolve({ schema_json: JSON.stringify({}) })
+      ),
     };
 
     const mockData = {
