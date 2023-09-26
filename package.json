@@ -31,6 +31,7 @@
     "convict-format-with-validator": "^6.2.0",
     "dotenv": "^16.3.1",
     "fast-xml-parser": "^4.2.7",
+    "lodash": "^4.17.21",
     "superagent": "^8.1.2"
   }
 }

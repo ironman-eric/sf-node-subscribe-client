@@ -1,5 +1,7 @@
 require('dotenv').config();
-const { createClient, subscribe } = require('./pubSub');
+const _ = require('lodash');
+const { createClient, schema, subscribe } = require('./pubSub');
+const { handler, parser } = require('./events');
 const { login, metadata } = require('./auth');
 const config = require('./config.js');
 
@@ -19,7 +21,10 @@ async function main() {
       topic_name: '/event/Notification__e',
     };
 
-    await subscribe(client, fetchRequest);
+    const partialSchema = _.partial(schema, client);
+    const partialHandler = _.partial(handler, partialSchema, parser);
+
+    await subscribe(client, partialHandler, fetchRequest);
   } catch (e) {
     console.error(e);
   }

@@ -6,7 +6,7 @@ describe('schema', () => {
     const assert = 'schema';
 
     const mockClient = {
-      getSchema: jest.fn(() => Promise.resolve('schema')),
+      getSchema: jest.fn((_event, cb) => cb(null, 'schema')),
     };
 
     // ACT
@@ -14,5 +14,19 @@ describe('schema', () => {
 
     // ASSERT
     expect(result).toEqual(assert);
+  });
+
+  it('should fail when schema not found', async () => {
+    // ARRANGE
+    const assert = 'error';
+
+    const mockClient = {
+      getSchema: jest.fn((_event, cb) => cb('error')),
+    };
+
+    // ASSERT
+    await expect(async () => {
+      await schema(mockClient, 'schemaId');
+    }).rejects.toEqual(assert);
   });
 });
