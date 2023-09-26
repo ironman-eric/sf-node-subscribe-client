@@ -16,23 +16,11 @@ describe('subscribe', () => {
 
     const mockClient = {
       subscribe: jest.fn(() => mockEvents),
-      getSchema: jest.fn(() =>
-        Promise.resolve({ schema_json: JSON.stringify({}) })
-      ),
     };
 
-    const mockData = {
-      events: [
-        {
-          event: {
-            schema_id: 1,
-            payload: {
-              data: [1],
-            },
-          },
-        },
-      ],
-    };
+    const mockHandler = jest.fn(() => Promise.resolve([{}]));
+
+    const mockData = {};
 
     mockEvents.on.mockImplementation((event, cb) => {
       if (event === 'data') {
@@ -41,11 +29,12 @@ describe('subscribe', () => {
     });
 
     // ACT
-    const result = await subscribe(mockClient);
+    const result = await subscribe(mockClient, mockHandler);
 
     // ASSERT
     expect(result).toEqual(assert);
     expect(mockEvents.on).toHaveBeenCalledWith('data', expect.any(Function));
+    expect(mockHandler).toHaveBeenCalledTimes(1);
     expect(mockEvents.on).not.toHaveBeenCalledWith('status');
     expect(mockEvents.on).not.toHaveBeenCalledWith('end');
   });

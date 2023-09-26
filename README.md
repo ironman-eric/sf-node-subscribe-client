@@ -1,6 +1,6 @@
 # sf-pub-sub
 
-nodejs salesforce pub sub integration
+nodejs salesforce sub integration
 
 ## Table of Contents
 
@@ -75,7 +75,6 @@ Room for improvement:
 
 To do:
 
-- Publish events
 - Currently subscribe to start of stream
 
 ## Acknowledgements
