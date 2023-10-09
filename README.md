@@ -16,7 +16,7 @@ nodejs salesforce sub integration
 
 ## General Information
 
-nodejs client for salesforce pub-sub
+nodejs client to subscribe to salesforce pub-sub events
 
 ## Technologies Used
 
@@ -77,16 +77,11 @@ To do:
 
 - Currently subscribe to start of stream
 
-## Acknowledgements
+## Misc.
 
-Give credit here.
+### Synthetic Events
 
-- This project was inspired by [salesforce-pubsub-api-client](https://www.npmjs.com/package/salesforce-pubsub-api-client).
-
-## Contact
-
-Created by [ironman-eric](https://github.com/ironman-eric)
-
+'''
 //Creating PE instances
 List<Notification**e> platformEventList = new List<Notification**e>();
 Notification**e testEvent = new Notification**e();
@@ -109,3 +104,16 @@ err.getMessage());
 }
 }  
 }
+'''
+
+## Acknowledgements
+
+Give credit here.
+
+- This project was inspired by [salesforce-pubsub-api-client](https://www.npmjs.com/package/salesforce-pubsub-api-client).
+
+## Contact
+
+Created by [ironman-eric](https://github.com/ironman-eric)
+
+
